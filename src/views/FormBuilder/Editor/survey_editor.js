@@ -18,6 +18,9 @@ class SurveyEditor extends React.Component {
     this.handleDragEnter = this.handleDragEnter.bind(this)
     this.handleDragLeave = this.handleDragLeave.bind(this)
     this.handleDrop = this.handleDrop.bind(this)
+
+    this.handleQuestionRemove = this.handleQuestionRemove.bind(this)
+    this.handleQuestionChange = this.handleQuestionChange.bind(this)
   }
 
   render () {

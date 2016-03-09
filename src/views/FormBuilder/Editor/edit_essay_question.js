@@ -4,11 +4,9 @@ import merge from 'merge'
 
 class EditEssayQuestion extends React.Component {
 
-  propTypes: {
-    key: React.PropTypes.number.isRequired,
-    onChange: React.PropTypes.func.isRequired,
-    onRemove: React.PropTypes.func.isRequired,
-    question: React.PropTypes.object.isRequired
+  constructor (props) {
+    super(props)
+    this.handleRemove = this.handleRemove.bind(this)
   }
 
   render () {

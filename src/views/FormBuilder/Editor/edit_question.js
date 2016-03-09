@@ -8,6 +8,11 @@ var typeLabels = {
 
 class EditQuestion extends React.Component {
 
+  constructor (props) {
+    super(props)
+    this.handleRemove = this.handleRemove.bind(this)
+  }
+
   getTypeLabel () {
     return typeLabels[this.props.type]
   }
