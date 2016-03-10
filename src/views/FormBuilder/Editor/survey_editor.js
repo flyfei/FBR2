@@ -2,8 +2,27 @@ import React from 'react'
 import DraggableQuestions from './draggable_questions'
 import EditEssayQuestion from './edit_essay_question'
 
+import PanelList from './panels/PanelList'
+
 import update from 'react-addons-update'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+
+const objects = [
+  {
+    'text': 'make',
+    'rotate': 0,
+    'fontWeight': 'normal',
+    'fontStyle': 'normal',
+    'textDecoration': 'none',
+    'fill': 'rgba(255, 255, 117, 1)',
+    'fontSize': '40',
+    'fontFamily': 'Helvetica',
+    'type': 'text',
+    'x': 87,
+    'y': 159,
+    'blendMode': 'normal'
+  }
+]
 
 class SurveyEditor extends React.Component {
   constructor (props) {
@@ -39,6 +58,8 @@ class SurveyEditor extends React.Component {
       dropZoneEntered = 'drag-enter'
     }
 
+    let showPropertyPanel = true
+
     return (
       <div className='survey-editor'>
         <div className='row'>
@@ -47,7 +68,7 @@ class SurveyEditor extends React.Component {
             <DraggableQuestions />
           </aside>
 
-          <div className='survey-canvas col-md-9'>
+          <div className='survey-canvas col-md-6'>
 
             <ReactCSSTransitionGroup transitionName='question'>
               {questions}
@@ -68,7 +89,17 @@ class SurveyEditor extends React.Component {
             </div>
           </div>
 
+          <aside className='sidebar col-md-3'>
+              {showPropertyPanel && (
+                <PanelList
+                  objects={objects}
+                  onArrange={this.handleArrange.bind(this)}
+                  onChange={this.handleObjectChange.bind(this)}
+                />
+            )}
+          </aside>
         </div>
+
       </div>
     )
   }
@@ -127,6 +158,17 @@ class SurveyEditor extends React.Component {
     // })
   }
 
+/*
+*属性
+*/
+  handleObjectChange (key, value) {
+    let {selectedObjectIndex} = this.state
+    console.log('handleObjectChange  key:' + key + '  value:' + value +
+    ' selectedObjectIndex(old??):' + selectedObjectIndex)
+  }
+  handleArrange (arrange) {
+    console.log('handleArrange:' + arrange)
+  }
 }
 
 SurveyEditor.propTypes = {
